@@ -1,2 +1,2 @@
 # ThermApta
-Packageto design an optimal RNA Thermometer
+Package to design an optimal RNA Thermometer
