@@ -18,9 +18,21 @@ class Sequence():
     
     def updateGC():
         
+        gc_s = 0
+        sequence_bps = self.primary_seq.list
+        
+        for bp in sequence_bps:
+            if (bp == "C" or bp == "G"):
+                gc_s++
+        
+        self.gc_content = gcs / len(sequence_bps)
+        
+        return
+        
     
     def getGC():
         
+        return (self.gc_content)
     
     def isBlacklisted():
         
