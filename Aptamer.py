@@ -9,12 +9,18 @@ class Aptamer():
     def graph_points(): 
         #plots the melt profile 
         #Calls Method in Meltprofile Class 
-        return self.melt_prof.plot
+        return self.melt_prof.plot()
         
     def updateGC():
+        #Manually read through assembled sequences to count G and C content
+        #O(N) - reads every character of every sequence in assembled_seq
+        #Saves information in fields G and C
+        '''WILL LIKELY CHANGE TO UPDATE A, U, G, and C'''
         pass 
     
     def getGC():
+        #Returns stored G/C values
+        '''Probably change into 4 getter functions for A, U, G, C'''
         pass
     '''
     def isBlaclisted(backlist_file = ""): 
