@@ -1,4 +1,9 @@
-import Sequence
+import MeltProfile
+from Sequence import Sequence
 
-Sequence.test();
+print("Hello, MagGenix!")
 
+seq = Sequence()
+
+print("Sequence made")
+seq.test()
