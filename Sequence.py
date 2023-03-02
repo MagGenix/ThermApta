@@ -8,16 +8,33 @@
 # check for shine delgarno seq?
 # use numbers to encode bp
 
+import random
+
 class Sequence():
     
-    def __init__(self):
-        self.sense = "ACGUACGUACGUGCAAUGCUUACGACAGUCAAGUCUAGCUAGUCCUGU"
-        self.antisense = self.sense[::-1]
-        self.conservation_factors = [];
-        self.unfolding_temp = [];
-        self.gc = 0.0
-        self.au = 0.0
-        self.length = [];
+    
+    def __init__(self, sense = "ACGUACGUACGUGCAAUGCUUACGACAGUCAAGUCUAGCUAGUCCUGU"):
+        self.sense = sense #primary_sequence interpretation of strand
+        self.antisense = self.sense[::-1] #antisense strand (reversed strand)
+        self.conservation_factors = []; #probability vector, higher prob means more likely mutation for that bp
+    
+        self.gc = 0.0 #gc = (G + C) / (total)
+        self.au = 0.0 
+        self.length = len(self.sense);
+    
+    
+    # generate random sequence of specified length (default: 100 bp)
+    def randomSeq(self, length = 100): 
+        
+        bp = ["A", "U", "G", "C"]
+        rand_seq = ""
+        
+        for i in range(0, length):
+            rand_index = random.randint(0, 3)
+            rand_seq += bp[rand_index]
+        
+        print(rand_seq)
+    
     
     def updateGC(self):
         
@@ -61,6 +78,8 @@ class Sequence():
         
         self.updateAU()
         print(self.getAU())
+        self.randomSeq(length = 100)
+        
         
 ## -----------------
     
