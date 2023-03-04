@@ -9,33 +9,17 @@
 # use numbers to encode bp
 
 import random
-import MeltProfile
+from MeltProfile import MeltProfile
 
 class Sequence():
     
-    def __init__(self, sense = None):
+    def __init__(self, sense):
         self.sense = sense #primary_sequence interpretation of strand
         self.antisense = self.sense[::-1] #antisense strand (reversed strand)
         self.conservation_factors = [] #probability vector, higher prob means more likely mutation for that bp
-        self.updateBases()
+        self.countBases()
         self.length = len(self.sense)
         self.melt_profile = MeltProfile(self.sense)
-    
-    
-    # generate random sequence of specified length (default: 100 bp)
-    def randomSeq(self, length = 100): 
-        
-        bp = ["A", "U", "G", "C"]
-        rand_seq = ""
-        
-        for i in range(0, length):
-            rand_index = random.randint(0, 3)
-            rand_seq += bp[rand_index]
-        
-        if (self.sense != None):
-            print("Warning: Overwriting a sequence with a random sequence")
-        
-        self.sense = rand_seq
         
     def countBases(self):
         #count numbers of each bp type 
@@ -43,7 +27,7 @@ class Sequence():
         self.c = 0
         self.a = 0
         self.u = 0
-        for bp in sequenace_bps:
+        for bp in list(self.sense):
             if (bp == "C"):
                 self.c = self.c + 1
             if (bp == "G"):
@@ -80,6 +64,13 @@ class Sequence():
     def test(self):
         pass
     
+    def toString(self):
+        print("Sequence: ", self.sense)
+        print("Antisense: ", self.antisense)
+        print("A: \t", self.a)
+        print("U: \t", self.u)
+        print("C: \t", self.c)
+        print("G: \t", self.g)
     
         
         

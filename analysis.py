@@ -1,1 +1,1 @@
-import Aptamer, MeltProfile
+import Aptamer, MeltProfile, Sequence

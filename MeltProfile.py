@@ -1,4 +1,4 @@
-import Sequence
+
 import matplotlib.pyplot as plt
 
 class MeltProfile():
