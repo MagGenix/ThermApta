@@ -44,21 +44,21 @@ class Aptamer():
     
     def isBlacklisted(self, blacklist_file=""):
     # checks for primary sequence in the blacklist file and returns True if present 
-    reference = self.assembled_seq
+        reference = self.assembled_seq
 
-    with open(self, blacklist_file) as f:
-        sequences = f.readlines() # Assuming each sequence is on a newline 
+        with open(self, blacklist_file) as f:
+            sequences = f.readlines() # Assuming each sequence is on a newline 
 
-        for i in reference:
-            for j in sequences:
-                if i.strip() == j.strip():
-                    return True
-                else:
-                    pass # For now
+            for i in reference:
+                for j in sequences:
+                    if i.strip() == j.strip():
+                        return True
+                    else:
+                        pass # For now
                 
     def addBlacklisted(self, blacklist_file=""):
     # checks for primary sequence in the blacklist file and adds sequence if not present 
-    reference = self.assembled_seq
+        reference = self.assembled_seq
 
     if not self.isBlacklisted(blacklist_file):
         with open(blacklist_file, "a") as f:
