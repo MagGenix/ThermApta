@@ -10,46 +10,42 @@
 
 class Sequence():
     
-    def __init__(self):
-        self.sense = "ACGUACGUACGUGCAAUGCUUACGACAGUCAAGUCUAGCUAGUCCUGU"
+    def __init__(self, seq_str):
+        self.sense = seq_str
         self.antisense = self.sense[::-1]
         self.conservation_factors = [];
         self.unfolding_temp = [];
-        self.gc = 0.0
-        self.au = 0.0
-        self.length = [];
+        self.updateBases()
+        self.length = len(sense);
     
-    def updateGC(self):
-        
-        gc_s = 0
-        sequence_bps = list(self.sense)
-        
+    def updateBases(self):
+        self.g = 0
+        self.c = 0
+        self.a = 0
+        self.u = 0
         for bp in sequence_bps:
-            if (bp == "C" or bp == "G"):
-                gc_s += 1
-    
-        self.gc = gc_s / len(sequence_bps)
-        
+            if (bp == "C"):
+                self.c = self.c + 1
+            if (bp == "G"):
+                self.g = self.g + 1
+            if (bp == "A"):
+                self.a = self.a + 1
+            if (bp == "U"):
+                self.u = self.u + 1        
         return
     
-    def updateAU(self):
-        
-        au_s = 0
-        sequence_bps = list(self.sense)
-        
-        for bp in sequence_bps:
-            if (bp == "A" or bp == "U"):
-                au_s += 1
-            
-        self.au = au_s / len(sequence_bps)
-        
-        return
+    def get_C(self):
+        return (self.c)
     
-    def getGC(self):
-        return (self.gc)
+    def get_g(self):
+        return (self.g)
     
-    def getAU(self):
-        return (self.au)
+    def get_a(self):
+        return (self.a)
+    
+    def get_u(self):
+        return (self.u)
+    
     
     def test(self):
         print("MagGenix")
