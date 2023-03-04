@@ -19,43 +19,6 @@ class Aptamer():
             total_seq += seq.getSense()
             
         return (total_seq) 
-        
-<<<<<<< HEAD
-    def update_bases(self):
-=======
-    def updateGC(self):
->>>>>>> matched Aptamer class formatting and added sequence concatenation
-        #Manually read through assembled sequences to count G and C content
-        #O(N) - reads every character of every sequence in assembled_seq
-        #Saves information in fields for all bases 
-        
-        dna = self.assembeled_seq
-        total = []
-        
-        for sequence in dna:
-            Sequence.updateBases(sequence)
-            total.append([self.a, self.u, self.g, self.c])
-            
-        return total
-    
-<<<<<<< HEAD
-    def get_bases(self, sequence= ""):
-=======
-    def getGC(self, sequence= ""):
->>>>>>> matched Aptamer class formatting and added sequence concatenation
-        #Returns stored G/C values
-        dna = self.assembled_seq
-        ref = dna.index(sequence)
-        total = self.update_bases() 
-        
-        return [total[ref]]
-    
-    def length(self, sequence=""):
-        bases = self.get_bases(sequence)
-    
-        return sum(bases)
-        
-    
     
     def isBlacklisted(self, blacklist_file=""):
     # checks for primary sequence in the blacklist file and returns True if present 
@@ -75,6 +38,6 @@ class Aptamer():
     # checks for primary sequence in the blacklist file and adds sequence if not present 
         reference = self.assembled_seq
 
-    if not self.isBlacklisted(self, blacklist_file):
-        with open(blacklist_file, "a") as f:
-            f.write("\n".join(reference) + "\n")
+        if not self.isBlacklisted(self, blacklist_file):
+            with open(blacklist_file, "a") as f:
+                f.write("\n".join(reference) + "\n")
