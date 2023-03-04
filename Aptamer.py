@@ -15,7 +15,7 @@ class Aptamer():
         return self.melt_prof.plot()
     
     def concat_seq(seq_list): #returns full sequence of Aptamer, from obj representation 
-        total_seq = "
+        total_seq = ""
         for seq in seq_list:
             total_seq += seq.getSense()
             

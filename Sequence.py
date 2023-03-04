@@ -32,7 +32,7 @@ class Sequence():
             rand_index = random.randint(0, 3)
             rand_seq += bp[rand_index]
         
-        if (self.sense not None):
+        if (self.sense != None):
             print("Warning: Overwriting a sequence with a random sequence")
         
         self.sense = rand_seq
