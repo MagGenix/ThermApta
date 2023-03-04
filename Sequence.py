@@ -9,6 +9,7 @@
 # use numbers to encode bp
 
 import random
+import MeltProfile
 
 class Sequence():
     
@@ -18,6 +19,7 @@ class Sequence():
         self.conservation_factors = [] #probability vector, higher prob means more likely mutation for that bp
         self.updateBases()
         self.length = len(self.sense)
+        self.melt_profile = MeltProfile(self.sense)
     
     
     # generate random sequence of specified length (default: 100 bp)
@@ -40,7 +42,7 @@ class Sequence():
         self.c = 0
         self.a = 0
         self.u = 0
-        for bp in sequence_bps:
+        for bp in sequenace_bps:
             if (bp == "C"):
                 self.c = self.c + 1
             if (bp == "G"):
@@ -50,6 +52,14 @@ class Sequence():
             if (bp == "U"):
                 self.u = self.u + 1        
         return
+    
+    def generate_melt_profile(self):
+        
+        self.melt_profile.NUPACK_melt()
+
+        return
+    
+    #getters---------------------------------
     
     def get_C(self):
         return (self.c)
@@ -62,7 +72,6 @@ class Sequence():
     
     def get_u(self):
         return (self.u)
-    
     
     def test(self):
         pass
