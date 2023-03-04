@@ -37,7 +37,8 @@ class Sequence():
         
         self.sense = rand_seq
         
-    def updateBases(self):
+    def countBases(self):
+        #count numbers of each bp type 
         self.g = 0
         self.c = 0
         self.a = 0
@@ -61,7 +62,7 @@ class Sequence():
     
     #getters---------------------------------
     
-    def get_C(self):
+    def get_(self):
         return (self.c)
     
     def get_g(self):
