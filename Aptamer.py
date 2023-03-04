@@ -16,36 +16,31 @@ class Aptamer():
         #O(N) - reads every character of every sequence in assembled_seq
         #Saves information in fields G and C
         '''WILL LIKELY CHANGE TO UPDATE A, U, G, and C'''
-        pass 
+        dna = self.assembeled_seq
+        count_c = 0 
+        count_g = 0
+        total = []
+        
+        for sequence in dna:
+            for position in range(len(sequence)):
+                if sequence[position] == "C":
+                    count_c += 1
+                elif sequence[position] == "G":
+                    count_g += 1
+            count_dictionary = {"Number_of_C":count_c, "Number_of_G":count_g}
+            total.append(count_dictionary)
+        
+        return total
     
-    def getGC():
+    def getGC(sequence= ""):
         #Returns stored G/C values
+        dna = self.assembled_seq
+        ref = dna.index(sequence)
+        total = self.updateGC() 
         '''Probably change into 4 getter functions for A, U, G, C'''
-        pass
-    '''
-    def isBlaclisted(backlist_file = ""): 
-        # checks for primary sequence in the backlist file and returns true if present 
-        reference = self.assembled_seq
-        
-        with open(backlist_file) as f:
-            sequences = f.readlines() #Assuming each sequence is on a newline 
-            
-            for i in reference:
-                for j in sequences:
-                    if i == j:
-                        return True
-                    else:
-                        pass #For Now 
+        return [total[ref].values()]
     
-    def addBlackisted(backlist_file = ""):
-        # checks for primary sequence in the backlist file and adds sequence if not present 
-        reference = self.assembled_seq
-        
-        if self.isBlaclisted(backlist_file = "") != True:
-            with open(backlist_file,"a") as f:
-                f.write(ref for ref in referemces)
     
-    '''
     def isBlacklisted(blacklist_file=""):
     # checks for primary sequence in the blacklist file and returns True if present 
     reference = self.assembled_seq
