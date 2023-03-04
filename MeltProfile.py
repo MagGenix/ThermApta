@@ -1,4 +1,4 @@
-
+from nupack import Model, mfe
 import matplotlib.pyplot as plt
 
 class MeltProfile():
@@ -11,14 +11,18 @@ class MeltProfile():
         self.seq = seq
         self.curve_points = None # n x 2 array of data points
         self.score = None # Score of this melt curve
-        
+        self.energy = None
+        self.structure = None
         # Possible Desciptors
         self.lower = None # Lower bound of the melt curve
         self.upper = None # Upper bound of the melt curve
         
     def NUPACK_melt(self):
-        # TODO: Use NUPACK to calculate the melt profile
-        pass
+        structure = mfe(strands = [self.seq], model=Model())
+        self.energy = structure[0].energy
+        self.structure = structure[0].structure
+        
+        
     
     def plot(self):
         # TODO: plot the data in curve_points
