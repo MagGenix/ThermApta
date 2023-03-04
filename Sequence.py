@@ -73,8 +73,13 @@ class Sequence():
     def get_u(self):
         return (self.u)
     
+    def getSense(self):
+        return (self.sense) 
+    
     def test(self):
         pass
+    
+    
         
         
 ## -----------------

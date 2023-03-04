@@ -2,18 +2,29 @@ import Sequence
 import MeltProfile
 
 class Aptamer():
-    def __init__(self, assembled_seq = [], structure = [], melt_prof = []): 
+    def __init__(self, assembled_seq = [], structure = []): 
         #Takes three variables, the sequence, the structure, the melting profiling 
-        self.assembled_seq = assembled_seq
+        self.assembled_seq = assembled_seq #list of Sequence objs
         self.structure = structure
-        self.melt_prof = melt_profile 
+        self.melt_profile = MeltProfile(concat_seq(self.assembled_seq))
         
     def graph_points(self): 
         #plots the melt profile 
         #Calls Method in Meltprofile Class 
         return self.melt_prof.plot()
+    
+    def concat_seq(assembled_seq): #returns full sequence of Aptamer, from obj representation 
+        total_seq = "
+        for seq in assembled_seq:
+            total_seq += seq.getSense()
+            
+        return (total_seq) 
         
+<<<<<<< HEAD
     def update_bases(self):
+=======
+    def updateGC(self):
+>>>>>>> matched Aptamer class formatting and added sequence concatenation
         #Manually read through assembled sequences to count G and C content
         #O(N) - reads every character of every sequence in assembled_seq
         #Saves information in fields for all bases 
@@ -27,7 +38,11 @@ class Aptamer():
             
         return total
     
+<<<<<<< HEAD
     def get_bases(self, sequence= ""):
+=======
+    def getGC(self, sequence= ""):
+>>>>>>> matched Aptamer class formatting and added sequence concatenation
         #Returns stored G/C values
         dna = self.assembled_seq
         ref = dna.index(sequence)
@@ -60,6 +75,6 @@ class Aptamer():
     # checks for primary sequence in the blacklist file and adds sequence if not present 
         reference = self.assembled_seq
 
-    if not self.isBlacklisted(blacklist_file):
+    if not self.isBlacklisted(self, blacklist_file):
         with open(blacklist_file, "a") as f:
             f.write("\n".join(reference) + "\n")
