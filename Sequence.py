@@ -12,24 +12,12 @@ import random
 
 class Sequence():
     
-<<<<<<< HEAD
-    def __init__(self, seq_str):
-        self.sense = seq_str
-        self.antisense = self.sense[::-1]
-        self.conservation_factors = [];
-        self.unfolding_temp = [];
-        self.updateBases()
-        self.length = len(sense);
-=======
-    
-    def __init__(self, sense = "ACGUACGUACGUGCAAUGCUUACGACAGUCAAGUCUAGCUAGUCCUGU"):
+    def __init__(self, sense = None):
         self.sense = sense #primary_sequence interpretation of strand
         self.antisense = self.sense[::-1] #antisense strand (reversed strand)
-        self.conservation_factors = []; #probability vector, higher prob means more likely mutation for that bp
-    
-        self.gc = 0.0 #gc = (G + C) / (total)
-        self.au = 0.0 
-        self.length = len(self.sense);
+        self.conservation_factors = [] #probability vector, higher prob means more likely mutation for that bp
+        self.updateBases()
+        self.length = len(self.sense)
     
     
     # generate random sequence of specified length (default: 100 bp)
@@ -42,10 +30,11 @@ class Sequence():
             rand_index = random.randint(0, 3)
             rand_seq += bp[rand_index]
         
-        print(rand_seq)
-    
->>>>>>> 954ee91fccb556f6b476cd45a44286fef03461ad
-    
+        if (self.sense not None):
+            print("Warning: Overwriting a sequence with a random sequence")
+        
+        self.sense = rand_seq
+        
     def updateBases(self):
         self.g = 0
         self.c = 0
@@ -76,16 +65,7 @@ class Sequence():
     
     
     def test(self):
-        print("MagGenix")
-        print(self.sense)
-        print(self.antisense)
-        
-        self.updateGC()
-        print(self.getGC())
-        
-        self.updateAU()
-        print(self.getAU())
-        self.randomSeq(length = 100)
+        pass
         
         
 ## -----------------
