@@ -1,3 +1,5 @@
 *.ipynb*
 temp.py
 __pycache__
+*.png
+

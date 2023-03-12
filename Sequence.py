@@ -41,6 +41,10 @@ class Sequence():
     
     def generate_melt_profile(self):
         self.melt_profile.NUPACK_melt()
+        return self.melt_profile.curve_points
+    
+    def plot_melt_profile(self, fig=None, ax=None, title=""):
+        self.melt_profile.plot(fig, ax, title)
         return
     
     def get_energy(self, temp):
