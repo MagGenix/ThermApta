@@ -1,16 +1,13 @@
 import Aptamer, MeltProfile, Sequence 
 
 def dna_to_rna(sequence=""):
-    for bases in sequence:
-        if bases == "A":
-            bases.replace(bases, "U")
-        elif bases == "C":
-            bases.replace(bases, "G")
-        elif bases == "G":
-            bases.replace(bases, "C")
-        else:
-            bases.replace(bases, "A")
-    return sequence 
+    rna = sequence.upper()\
+            .replace("A", "u")\
+            .replace("C", "g")\
+            .replace("G", "c")\
+            .replace("T", "a")\
+            .upper()
+    return rna
     
 def rna_to_seq(mrna=""):
     return Sequence(mrna)

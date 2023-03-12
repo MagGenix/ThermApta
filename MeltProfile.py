@@ -1,4 +1,4 @@
-from nupack import Model, mfe
+from nupack import Model, mfe, pairs
 import matplotlib.pyplot as plt
 
 class MeltProfile():
@@ -17,11 +17,8 @@ class MeltProfile():
         self.lower = None # Lower bound of the melt curve
         self.upper = None # Upper bound of the melt curve
         
-    def NUPACK_melt(self):
-        structure = mfe(strands = [self.seq], model=Model())
-        self.energy = structure[0].energy
-        self.structure = structure[0].structure
-        
+    def NUPACK_melt(self):        
+        pass
         
     
     def plot(self):

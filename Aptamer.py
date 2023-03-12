@@ -1,5 +1,5 @@
-import Sequence
-import MeltProfile
+from Sequence import Sequence
+from MeltProfile import MeltProfile
 
 class Aptamer():
     def __init__(self, seq_list = [], structure = []): 

@@ -10,6 +10,7 @@
 
 import random
 from MeltProfile import MeltProfile
+from nupack import Model, mfe, pairs
 
 class Sequence():
     
@@ -39,14 +40,33 @@ class Sequence():
         return
     
     def generate_melt_profile(self):
-        
         self.melt_profile.NUPACK_melt()
-
         return
     
+    def get_energy(self, temp):
+        structure = mfe(
+            strands=[self.sense],
+            model=Model(
+                material='rna',
+                ensemble='stacking',
+                celsius=temp,
+                sodium=1.0,
+                magnesium=0.0))
+        return structure[0].energy
+            
+    def get_pair_prob(self, temp):
+        pair_prob = pairs(
+            strands=[self.sense], 
+            model=Model(
+                material='rna', 
+                ensemble='stacking', 
+                celsius=temp,
+                sodium=1.0,
+                magnesium=0.0))
+        return pair_prob.to_array()
     #getters---------------------------------
     
-    def get_(self):
+    def get_c(self):
         return (self.c)
     
     def get_g(self):
